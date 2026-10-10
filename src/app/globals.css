@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+:root {
+  /* --- Palette, aligned to the reference gradient ----------------------
+     Electric cobalt core (#0876CE) → deep navy edge (#062F55 / #06233F),
+     with a very slightly blue off-white for light fields. */
+  --background: #f5f8fc;
+  --foreground: #0b1f3a;
+  --ink: #051730;
+  --blue-deep: #062f55;
+  --blue-abyss: #06233f;
+  --blue-primary: #07599b;
+  --blue-electric: #0876ce;
+  --blue-bright: #2f9dea;
+  --blue-light: #d6e8fb;
+  --off-white: #f5f8fc;
+  --muted: #5a7089;
+  --border: #dbe4f0;
+  --hairline: rgba(11, 31, 58, 0.14);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
+  --color-blue-deep: var(--blue-deep);
+  --color-blue-abyss: var(--blue-abyss);
+  --color-blue-primary: var(--blue-primary);
+  --color-blue-electric: var(--blue-electric);
+  --color-blue-bright: var(--blue-bright);
+  --color-blue-light: var(--blue-light);
+  --color-off-white: var(--off-white);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --font-heading: var(--font-jakarta);
+  --font-body: var(--font-jakarta);
+  --font-display: var(--font-messiri);
+  --font-mono: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-slide-up: slide-up 0.6s ease-out forwards;
+  --animate-drift: drift 38s linear infinite;
+  --animate-marquee: marquee 42s linear infinite;
+  --animate-marquee-slow: marquee 64s linear infinite;
+}
+
+@layer utilities {
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes drift {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes menu-in {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: none; }
+  }
+  .animate-menu-in { animation: menu-in 0.18s ease-out; }
+  .animate-fade-in { animation: var(--animate-fade-in); }
+  .animate-slide-up { animation: var(--animate-slide-up); }
+  .animate-drift { animation: var(--animate-drift); }
+  .animate-marquee { animation: var(--animate-marquee); }
+  .animate-marquee-slow { animation: var(--animate-marquee-slow); }
+
+  /* Editorial display type: Jakarta, tight and optically sized. */
+  .type-display {
+    font-family: var(--font-jakarta);
+    font-weight: 800;
+    line-height: 0.82;
+    letter-spacing: -0.045em;
+  }
+
+  /* El Messiri display accents: used with intent, never for body copy. */
+  .type-accent {
+    font-family: var(--font-messiri);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  /* Metadata labels. Set in Jakarta (not a third family) via tracking + case. */
+  .type-meta {
+    font-family: var(--font-jakarta);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* Hairline rule that reads as an editorial divider */
+  .rule-hair {
+    height: 1px;
+    width: 100%;
+    background: var(--hairline);
+  }
+
+  /* Off-grid bleed: lets a child escape the container gutter */
+  .bleed-right {
+    margin-right: calc(50% - 50vw);
+  }
+  .bleed-left {
+    margin-left: calc(50% - 50vw);
+  }
+}
+
+/* Structural guard: any horizontally-bleeding composition is clipped on the
+   section that hosts it, so off-grid elements (oversized type, bleeding image
+   plates, cropped ✳ marks) can never create page-level horizontal scroll. */
+.gutter-safe {
+  overflow-x: clip;
+}
+
+/* Fixed header offset: anchor jumps (#work, #about, …) must land below the
+   56–64px fixed bar instead of sliding section tops underneath it. */
+section[id] {
+  scroll-margin-top: 3.5rem;
+}
+@media (min-width: 768px) {
+  section[id] {
+    scroll-margin-top: 4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Marquee rows become static strips: nudge them into a readable position
+     rather than freezing them mid-glyph. */
+  .marquee-row {
+    transform: none !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-jakarta);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+::selection {
+  background: var(--blue-electric);
+  color: white;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue-electric);
+  outline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
