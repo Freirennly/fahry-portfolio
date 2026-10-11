@@ -66,11 +66,12 @@ export function Hero() {
         >
           <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[6px] bg-blue-abyss lg:aspect-[16/9]">
             <OptimizedImage
-              src="/images/brand/hero-banner.png"
+              src="/images/brand/hero-banner.webp"
+              sizes="(max-width: 1024px) 100vw, 1280px"
               alt="Banner kreatif: cetak spasial, tata letak desain, dan elemen AI"
               fill
               priority
-              sizes="100vw"
+              fetchPriority="high"
               className="object-cover object-center brightness-[0.92] contrast-[1.04]"
             />
           </div>

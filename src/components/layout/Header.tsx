@@ -95,10 +95,11 @@ export function Header() {
             >
               <span className="relative block h-6 w-[114px] md:h-6 md:w-[114px]">
                 <OptimizedImage
-                  src="/images/brand/fahry-logo-light.png"
+                  src="/images/brand/fahry-logo-light.webp"
                   alt=""
                   fill
-                  priority
+                  priority={false}
+                  loading="eager"
                   sizes="114px"
                   className="object-contain"
                 />

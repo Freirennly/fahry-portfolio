@@ -207,6 +207,7 @@ export default async function ProjectPage({ params }: PageProps) {
                   alt={`${project.title} · tinjauan`}
                   fill
                   priority
+                  fetchPriority="high"
                   sizes="(max-width: 768px) 100vw, 420px"
                   className="object-cover"
                 />
@@ -219,7 +220,8 @@ export default async function ProjectPage({ params }: PageProps) {
                 alt={`${project.title} · tinjauan`}
                 fill
                 priority
-                sizes="100vw"
+                fetchPriority="high"
+                sizes="(max-width: 1024px) 100vw, 1280px"
                 className="object-cover"
               />
             </div>
