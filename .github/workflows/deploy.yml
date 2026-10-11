@@ -55,6 +55,7 @@ jobs:
           test -f out/work/kalanata/index.html || { echo "Missing out/work/kalanata/index.html"; exit 1; }
           test -f out/work/kinarya/index.html || { echo "Missing out/work/kinarya/index.html"; exit 1; }
           test -f out/work/pkkmb-fkip-uns-2025/index.html || { echo "Missing out/work/pkkmb-fkip-uns-2025/index.html"; exit 1; }
+          python3 scripts/verify_images.py
           echo "Static export verification passed."
 
       - name: Upload artifact

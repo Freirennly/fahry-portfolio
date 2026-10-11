@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn, getAssetPath } from "@/lib/utils";
 
 interface OptimizedImageProps {
   src: string;
@@ -22,13 +22,14 @@ export function OptimizedImage({
   placeholder = "blur",
   blurDataURL,
 }: OptimizedImageProps) {
-  const isSvg = src.endsWith(".svg");
+  const resolvedSrc = getAssetPath(src);
+  const isSvg = resolvedSrc.endsWith(".svg");
   const effectivePlaceholder = isSvg ? "empty" : placeholder;
   const effectiveBlurDataURL = isSvg ? undefined : (blurDataURL || `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Crect fill='%23e2e8f0' width='10' height='10'/%3E%3C/svg%3E`);
 
   return (
     <Image
-      src={src}
+      src={resolvedSrc}
       alt={alt}
       fill={fill}
       priority={priority}
@@ -37,7 +38,7 @@ export function OptimizedImage({
       blurDataURL={effectiveBlurDataURL}
       className={cn(
         "transition-opacity duration-700 ease-out",
-        fill ? "object-cover" : "",
+        fill && !className.includes("object-") ? "object-cover" : "",
         className
       )}
     />

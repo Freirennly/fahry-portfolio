@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
 import { motion, AnimatePresence } from "framer-motion";
 import { useReducedMotion } from "@/components/motion/useReducedMotion";
 import { cn } from "@/lib/utils";
@@ -94,7 +94,7 @@ export function Header() {
               aria-label="Muhammad Fahry Ali, Beranda"
             >
               <span className="relative block h-6 w-[114px] md:h-6 md:w-[114px]">
-                <Image
+                <OptimizedImage
                   src="/images/brand/fahry-logo-light.png"
                   alt=""
                   fill
