@@ -2,6 +2,8 @@ import { MetadataRoute } from "next";
 import { featuredProjects } from "@/lib/data/featuredProjects";
 import { PROVISIONAL_SITE_URL } from "@/lib/data/site";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes: MetadataRoute.Sitemap = [
     {

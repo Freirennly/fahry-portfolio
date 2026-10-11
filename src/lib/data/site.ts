@@ -9,7 +9,9 @@ import { SiteConfig } from "./types";
  * A trailing slash is trimmed so route concatenation (e.g. `${url}/work/x`)
  * and sitemap/canonical URLs never produce a double slash.
  */
-const RAW_SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://fahryali.com";
+const RAW_SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  "https://freirennly.github.io/fahry-portfolio";
 
 export const PROVISIONAL_SITE_URL = RAW_SITE_URL.replace(/\/+$/, "");
 
