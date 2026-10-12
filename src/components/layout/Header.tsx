@@ -5,14 +5,8 @@ import Link from "next/link";
 import { OptimizedImage } from "@/components/ui/OptimizedImage";
 import { motion, AnimatePresence } from "framer-motion";
 import { useReducedMotion } from "@/components/motion/useReducedMotion";
+import { navLinks } from "@/lib/data/site";
 import { cn } from "@/lib/utils";
-
-const navLinks = [
-  { href: "#work", label: "WORK" },
-  { href: "#about", label: "ABOUT" },
-  { href: "#archive", label: "ARCHIVE" },
-  { href: "#contact", label: "CONTACT" },
-];
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -173,16 +167,15 @@ export function Header() {
             className="md:hidden fixed right-4 sm:right-6 top-[calc(3.5rem+6px)] z-50 w-[min(260px,calc(100vw-32px))] max-h-[calc(100svh-5rem)] overflow-y-auto rounded-xl bg-[#06172a]/88 backdrop-blur-xl border border-white/12 p-2 shadow-[0_16px_40px_rgba(2,10,24,0.52)]"
             aria-label="Navigasi seluler"
           >
-            <ul className="flex flex-col gap-0.5 w-full" role="menu">
+            <ul className="flex flex-col gap-0.5 w-full">
               {navLinks.map((link, i) => (
-                <li key={link.href} role="none">
+                <li key={link.href}>
                   <a
                     href={link.href}
                     onClick={() => {
                       setMobileOpen(false);
                       buttonRef.current?.focus();
                     }}
-                    role="menuitem"
                     className="flex items-center gap-3.5 px-3.5 py-2.5 rounded-lg text-sm font-semibold tracking-wide text-white/85 hover:text-white hover:bg-white/10 focus-visible:bg-white/15 focus-visible:text-white transition-colors focus-visible:outline-none"
                   >
                     <span className="type-meta text-xs font-mono text-blue-bright/80">0{i + 1}</span>

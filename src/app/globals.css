@@ -71,6 +71,28 @@
   .animate-marquee { animation: var(--animate-marquee); }
   .animate-marquee-slow { animation: var(--animate-marquee-slow); }
 
+  /* Hairline rule that reads as an editorial divider */
+  .rule-hair {
+    height: 1px;
+    width: 100%;
+    background: var(--hairline);
+  }
+
+  /* Off-grid bleed: lets a child escape the container gutter */
+  .bleed-right {
+    margin-right: calc(50% - 50vw);
+  }
+  .bleed-left {
+    margin-left: calc(50% - 50vw);
+  }
+}
+
+/* Editorial type primitives belong in `components`, not `utilities`.
+   Inside `utilities` they were emitted *after* Tailwind's generated classes, so
+   at equal specificity they beat the call-site utilities: `leading-[0.92]`,
+   `font-bold`, `text-sm`, `normal-case` and `tracking-normal` were silently
+   dropped. `components` is the correct layer for defaults utilities override. */
+@layer components {
   /* Editorial display type: Jakarta, tight and optically sized. */
   .type-display {
     font-family: var(--font-jakarta);
@@ -94,21 +116,6 @@
     line-height: 1.2;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-  }
-
-  /* Hairline rule that reads as an editorial divider */
-  .rule-hair {
-    height: 1px;
-    width: 100%;
-    background: var(--hairline);
-  }
-
-  /* Off-grid bleed: lets a child escape the container gutter */
-  .bleed-right {
-    margin-right: calc(50% - 50vw);
-  }
-  .bleed-left {
-    margin-left: calc(50% - 50vw);
   }
 }
 
@@ -146,7 +153,9 @@ section[id] {
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  /* `clip` (not `hidden`): `hidden` turns the root into a scroll container,
+     which kills every `position: sticky` descendant on the page. */
+  overflow-x: clip;
   max-width: 100%;
 }
 
@@ -162,14 +171,19 @@ body {
   font-family: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-jakarta);
-  font-weight: 700;
-  line-height: 1.1;
+/* Layered so Tailwind utilities win. Unlayered rules outrank every @layer,
+   which previously made `font-weight`/`line-height` here override
+   `leading-[…]` and the `type-display` / `type-accent` utilities. */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-jakarta);
+    font-weight: 700;
+    line-height: 1.1;
+  }
 }
 
 ::selection {

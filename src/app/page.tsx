@@ -1,6 +1,5 @@
 "use client";
 
-import { ScrollProgressProvider } from "@/components/motion/ScrollProgressProvider";
 import { MotionConfig } from "framer-motion";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -16,34 +15,32 @@ import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <ScrollProgressProvider>
-      <MotionConfig reducedMotion="user">
-        <Header />
-        <main id="main-content" className="flex-1">
-          {/* BLUE */} <Hero />
+    <MotionConfig reducedMotion="user">
+      <Header />
+      <main id="main-content" className="flex-1">
+        {/* BLUE */} <Hero />
 
-          {/* Identity band: a single marquee of the disciplines, framing the work. */}
-          <Marquee items={["TECHNOLOGY", "CREATIVE", "MEDIA", "RESEARCH", "SYSTEMS"]} tone="ink" speed="slow" />
+        {/* Identity band: a single marquee of the disciplines, framing the work. */}
+        <Marquee items={["TECHNOLOGY", "CREATIVE", "MEDIA", "RESEARCH", "SYSTEMS"]} tone="ink" speed="slow" />
 
-          {/* LIGHT */} <Intro />
-          {/* LIGHT */} <Journey />
-          {/* BLUE */} <SelectedWork />
-          {/* LIGHT */} <Skills />
-          {/* LIGHT */} <Archive />
+        {/* LIGHT */} <Intro />
+        {/* LIGHT */} <Journey />
+        {/* BLUE */} <SelectedWork />
+        {/* LIGHT */} <Skills />
+        {/* LIGHT */} <Archive />
 
-          {/* Second marquee: a blue beat that hands the light field over to the dark one. */}
-          <Marquee
-            items={["VIDEOGRAFI", "WEBGIS", "OTOMASI", "KEPEMIMPINAN", "AGEN AI"]}
-            tone="blue"
-            speed="normal"
-            separator="dot"
-          />
+        {/* Second marquee: a blue beat that hands the light field over to the dark one. */}
+        <Marquee
+          items={["VIDEOGRAFI", "WEBGIS", "OTOMASI", "KEPEMIMPINAN", "AGEN AI"]}
+          tone="blue"
+          speed="normal"
+          separator="dot"
+        />
 
-          {/* BLUE */} <Currently />
-          {/* BLUE */} <Contact />
-        </main>
-        <Footer />
-      </MotionConfig>
-    </ScrollProgressProvider>
+        {/* BLUE */} <Currently />
+        {/* BLUE */} <Contact />
+      </main>
+      <Footer />
+    </MotionConfig>
   );
 }

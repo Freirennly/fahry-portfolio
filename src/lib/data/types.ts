@@ -38,16 +38,6 @@ export interface FeaturedProject {
   learning?: string;
 }
 
-export interface TimelineEntry {
-  year: string;
-  title: string;
-  role: string;
-  category: Category;
-  description: string;
-  featuredProjectSlug?: string;
-  archiveId?: string;
-}
-
 export interface ArchiveItem {
   id: string;
   title: string;
@@ -69,16 +59,6 @@ export interface ArchiveItem {
     live?: string;
     github?: string;
   };
-}
-
-export interface SkillCategory {
-  category: "TECH" | "CREATIVE" | "MEDIA" | "LEADERSHIP";
-  label: string;
-  items: {
-    name: string;
-    level?: "Advanced" | "Intermediate" | "Learning";
-    description?: string;
-  }[];
 }
 
 export interface CurrentlyData {

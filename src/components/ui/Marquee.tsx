@@ -21,6 +21,13 @@ const toneClasses = {
   light: "bg-off-white text-ink/75 border-ink/10",
 };
 
+/** Edge-fade colour must match the band fill, or a seam shows at both ends. */
+const fadeFromClasses = {
+  blue: "from-blue-deep",
+  ink: "from-ink",
+  light: "from-off-white",
+};
+
 function Separator({ kind, tone }: { kind: "asterisk" | "dot"; tone: NonNullable<MarqueeProps["tone"]> }) {
   if (kind === "dot") {
     return (
@@ -104,18 +111,16 @@ export function Marquee({
         aria-hidden="true"
         className={cn(
           "pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28",
-          tone === "light"
-            ? "bg-gradient-to-r from-off-white to-transparent"
-            : "bg-gradient-to-r from-blue-deep to-transparent"
+          "bg-gradient-to-r to-transparent",
+          fadeFromClasses[tone]
         )}
       />
       <div
         aria-hidden="true"
         className={cn(
           "pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28",
-          tone === "light"
-            ? "bg-gradient-to-l from-off-white to-transparent"
-            : "bg-gradient-to-l from-blue-deep to-transparent"
+          "bg-gradient-to-l to-transparent",
+          fadeFromClasses[tone]
         )}
       />
     </div>

@@ -133,6 +133,15 @@ export const archiveData: ArchiveItem[] = [
     images: ["/images/archive/let/let-1.webp", "/images/archive/let/let-2.webp"],
   },
   {
+    id: "bem-wakil-menteri-riset-data",
+    title: "BEM FKIP UNS · Wakil Menteri Riset dan Data",
+    year: "2025 (Jan–Des)",
+    category: "ORGANIZATION",
+    role: "Wakil Menteri Riset dan Data",
+    description:
+      "Mengoordinasikan riset dan data strategis untuk tata kelola kemahasiswaan FKIP UNS. Merupakan pengalaman organisasi yang telah selesai.",
+  },
+  {
     id: "bem-desa-mitra",
     title: "BEM FKIP UNS · Staf Pengembangan Desa Mitra",
     year: "2024",

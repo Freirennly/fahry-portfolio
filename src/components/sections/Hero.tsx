@@ -44,13 +44,7 @@ export function Hero() {
           style={{ y: reducedMotion ? 0 : headlineY, opacity: fade }}
           className="flex flex-col items-center text-center"
         >
-          {/* El Messiri applied inline: the unlayered `h1..h6` rule in
-              globals.css outranks layered utilities, so a font utility class
-              here would be silently ignored. */}
-          <h1
-            style={{ fontFamily: "var(--font-messiri)", fontWeight: 600 }}
-            className="text-[56px] leading-[0.95] tracking-tight text-white sm:text-[84px] lg:text-[112px]"
-          >
+          <h1 className="font-display font-semibold text-[56px] leading-[0.95] tracking-tight text-white sm:text-[84px] lg:text-[112px]">
             Muhammad Fahry Ali
           </h1>
 

@@ -84,6 +84,7 @@
   - Role: "Wakil Menteri Riset dan Data"
   - Description: "Mengoordinasikan riset dan data strategis... Merupakan pengalaman organisasi yang telah selesai."
   - Correctly displayed as **historical experience** (completed organization role), not an active position.
+  - Present in the archive `ORGANIZATION` filter; no case-study page (no `featuredProjectSlug`).
 
 ✅ All portfolio content is accurate and consistent with the specified requirements.
 

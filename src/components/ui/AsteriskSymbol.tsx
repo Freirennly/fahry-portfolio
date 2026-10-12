@@ -61,20 +61,3 @@ export function AsteriskMark({
     </svg>
   );
 }
-
-/** Backwards-compatible thin wrapper for existing call sites. */
-export function AsteriskSymbol({
-  className = "",
-  size = 24,
-  strokeWidth = 1.5,
-  fill = "currentColor",
-}: {
-  className?: string;
-  size?: number;
-  strokeWidth?: number;
-  fill?: string;
-}) {
-  return (
-    <AsteriskMark className={className} size={size} strokeWidth={strokeWidth} color={fill} />
-  );
-}

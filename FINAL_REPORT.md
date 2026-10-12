@@ -23,7 +23,7 @@
 - **Build Next.js**: ✅ Berhasil (2.1s)
 - **TypeScript**: ✅ Lulus pengecekan (tidak ada error)
 - **KKN Logbook Automation**: ✅ Dihapus dari seluruh konten publik
-- **Wakil Menteri Riset dan Data BEM FKIP UNS**: ✅ Ditampilkan sebagai pengalaman historis di timeline dan skills
+- **BEM FKIP UNS — Wakil Menteri Riset dan Data**: Ditampilkan sebagai pengalaman historis di arsip (kategori ORGANIZATION)
 - **Font**: ✅ Plus Jakarta Sans (primary), El Messiri (secondary) terjaga
 - **Palet warna**: ✅ #0876ce dan #062f55 berdasarkan, dengan putih/off-white pendamping
 - **Proyek**: ✅ KALANATA, KINARYA, PKKMB FKIP UNS 2025 tersedia
